@@ -1,0 +1,87 @@
+body {
+  font-family: 'Inter', sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior-y: contain;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@keyframes scan {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(250px);
+  }
+}
+
+.scan-line {
+  animation: scan 3s ease-in-out infinite;
+}
+
+@keyframes enter {
+  from {
+    opacity: var(--enter-opacity, 0);
+    transform: translate3d(var(--enter-x, 0), var(--enter-y, 0), 0) scale(var(--enter-scale, 1));
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+.animate-in {
+  animation-name: enter;
+  animation-duration: var(--enter-duration, 420ms);
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+.fade-in {
+  --enter-opacity: 0;
+}
+
+.slide-in-from-right {
+  --enter-x: 1.25rem;
+}
+
+.slide-in-from-right-4 {
+  --enter-x: 1rem;
+}
+
+.slide-in-from-top-1 {
+  --enter-y: -0.25rem;
+}
+
+.slide-in-from-top-2 {
+  --enter-y: -0.5rem;
+}
+
+.slide-in-from-top-4 {
+  --enter-y: -1rem;
+}
+
+.zoom-in {
+  --enter-scale: 0.96;
+}
+
+.zoom-in-95 {
+  --enter-scale: 0.95;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-in,
+  .scan-line {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

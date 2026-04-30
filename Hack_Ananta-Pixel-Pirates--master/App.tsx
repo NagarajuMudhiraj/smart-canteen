@@ -369,7 +369,9 @@ const App: React.FC = () => {
         </header>
 
         <div className="p-4 sm:p-6 lg:p-12 pb-24 lg:pb-12 flex-1 overflow-y-auto max-w-[1600px] mx-auto w-full no-scrollbar">
-          {renderView()}
+          <div key={currentView} className="animate-in fade-in slide-in-from-top-1">
+            {renderView()}
+          </div>
         </div>
       </main>
     </div>
